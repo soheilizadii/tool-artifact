@@ -7,4 +7,4 @@ metadata:
     run: otel-collector
 data:
   otel-collector-config.yaml: |
-{{ .Files.Get "files/otel/otel-collector-config.yaml" | indent 4 }}
+{{ .Files.Get "files/otel-collector-config.yaml" | indent 4 }}
