@@ -20,12 +20,12 @@ spec:
             - sh
             - -c
             - |
-              echo "⏳ Waiting for Kafka readiness..."
+              echo "Waiting for Kafka readiness"
               until kafka-topics --bootstrap-server kafka:9092 --list >/dev/null 2>&1; do
-                echo "Kafka not ready yet... sleeping 5s"
+                echo "Kafka not ready yet.. sleeping 5s"
                 sleep 5
               done
-              echo "✅ Kafka is ready!"
+              echo "Kafka is ready"
               sleep 5
       containers:
         - name: init-kafka
@@ -37,7 +37,7 @@ spec:
           args:
             - |
               until kafka-topics --bootstrap-server kafka:9092 --list >/dev/null 2>&1; do
-                echo "Kafka not ready yet, retrying..."
+                echo "Kafka not ready yet, retrying.."
                 sleep 5
               done
 

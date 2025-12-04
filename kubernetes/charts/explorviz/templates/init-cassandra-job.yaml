@@ -21,16 +21,16 @@ spec:
               - -c
               - |
                   until nslookup cassandra.default.svc.cluster.local >/dev/null 2>&1; do
-                    echo "Waiting for Cassandra service DNS...";
+                    echo "Waiting for Cassandra service DNS";
                     sleep 5;
                   done;
 
                   until nc -z cassandra.default.svc.cluster.local 9042; do
-                    echo "Waiting for Cassandra to accept connections...";
+                    echo "Waiting for Cassandra to accept connections";
                     sleep 5;
                   done;
 
-                  echo "Cassandra is ready!"
+                  echo "Cassandra is ready"
       containers:
         - name: init-cassandra
           image: explorviz/init-cassandra
@@ -40,6 +40,6 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
             - |
-              echo "🚀 Initializing Cassandra schema..."
+              echo "Initializing Cassandra schema"
               cqlsh cassandra.default.svc.cluster.local 9042 -f /init.cql
-              echo "🎉 Initialization complete!"
+              echo "Initialization complete"

@@ -24,12 +24,12 @@ spec:
             - sh
             - -c
             - |
-              echo "⏳ Waiting for Schema Registry at http://schema-registry:8081 ..."
+              echo "Waiting for Schema Registry at http://schema-registry:8081"
               until curl -sf http://schema-registry:8081/subjects | grep -q '\['; do
-                echo "Schema Registry not ready yet (empty or unreachable)... sleeping 5s"
+                echo "Schema Registry not ready yet (empty or unreachable). sleeping 5s"
                 sleep 5
               done
-              echo "✅ Schema Registry is ready and has subjects!"
+              echo "Schema Registry is ready and has subjects"
       containers:
         - name: trace-generator
           image: "{{ .Values.image.traceGenerator }}"

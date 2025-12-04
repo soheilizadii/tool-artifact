@@ -26,12 +26,12 @@ spec:
             - /bin/sh
             - -c
             - |
-              echo "Waiting for teastore-persistence to be ready..."
+              echo "Waiting for teastore-persistence to be ready"
               until nc -z teastore-persistence 8080; do
-                echo "Still waiting for teastore-persistence on port 8080..."
+                echo "Still waiting for teastore-persistence on port 8080"
                 sleep 3
               done
-              echo "teastore-persistence is ready!"
+              echo "teastore-persistence is ready"
 
       containers:
         - name: teastore-auth
@@ -48,7 +48,7 @@ spec:
             - name: RABBITMQ_HOST
               value: "teastore-rabbitmq"
 
-          # ✅ Mount shared Kieker ConfigMap
+          #Mount shared Kieker ConfigMap
           volumeMounts:
             - name: kieker-config-volume
               mountPath: /kieker/config/kieker.monitoring.properties
@@ -73,7 +73,7 @@ spec:
               cpu: {{ .Values.auth.resources.limits.cpu }}
               memory: {{ .Values.auth.resources.limits.memory }}
 
-      # ✅ Declare volume for Kieker ConfigMap
+      #Declare volume for Kieker ConfigMap
       volumes:
         - name: kieker-config-volume
           configMap:

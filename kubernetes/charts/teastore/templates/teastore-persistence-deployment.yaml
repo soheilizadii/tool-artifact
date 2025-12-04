@@ -25,12 +25,12 @@ spec:
             - /bin/sh
             - -c
             - |
-              echo "Waiting for teastore-registry to be ready..."
+              echo "Waiting for teastore-registry to be ready"
               until nc -z teastore-registry 8080; do
-                echo "Still waiting for teastore-registry on port 8080..."
+                echo "Still waiting for teastore-registry on port 8080"
                 sleep 3
               done
-              echo "teastore-registry is ready!"
+              echo "teastore-registry is ready"
       containers:
         - name: teastore-persistence
           image: "{{ .Values.image.persistence }}:{{ .Values.image.tag }}"
@@ -53,16 +53,6 @@ spec:
             - name: kieker-config
               mountPath: /kieker/config/kieker.monitoring.properties
               subPath: kieker.monitoring.properties
-          # readinessProbe:
-          #   httpGet:
-          #     path: /tools.descartes.teastore.persistence/rest/ready/isready
-          #     port: 8080
-          #     scheme: HTTP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /tools.descartes.teastore.persistence/rest/ready/isready
-          #     port: 8080
-          #     scheme: HTTP
       volumes:
         - name: kieker-config
           configMap:

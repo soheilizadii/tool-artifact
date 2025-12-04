@@ -31,18 +31,4 @@ spec:
               value: "{{ $value }}"
             {{- end }}
 
-          # ✅ Readiness probe
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: {{ .Values.frontend.port }}
-          #   initialDelaySeconds: 10
-          #   periodSeconds: 5
-
-          # # ✅ Liveness probe
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: {{ .Values.frontend.port }}
-          #   initialDelaySeconds: 20
-          #   periodSeconds: 10
+ 

@@ -26,12 +26,12 @@ spec:
             - /bin/sh
             - -c
             - |
-              echo "Waiting for teastore-image service to be ready..."
+              echo "Waiting for teastore-image service to be ready"
               until nc -z teastore-image 8080; do
-                echo "Still waiting for teastore-image..."
+                echo "Still waiting for teastore-image"
                 sleep 3
               done
-              echo "teastore-image is ready!"
+              echo "teastore-image is ready"
 
       containers:
         - name: teastore-webui
@@ -49,7 +49,7 @@ spec:
             - name: RABBITMQ_HOST
               value: "teastore-rabbitmq"
 
-          # ✅ Mount shared Kieker ConfigMap
+          #Mount shared Kieker ConfigMap
           volumeMounts:
             - name: kieker-config-volume
               mountPath: /kieker/config/kieker.monitoring.properties
@@ -63,7 +63,7 @@ spec:
               cpu: {{ .Values.webui.resources.limits.cpu }}
               memory: {{ .Values.webui.resources.limits.memory }}
 
-      # ✅ Declare volume for Kieker ConfigMap
+      # Declare volume for Kieker ConfigMap
       volumes:
         - name: kieker-config-volume
           configMap:

@@ -25,7 +25,7 @@ spec:
             - sh
             - -c
             - |
-              echo "⏳ Waiting for Kafka and Schema Registry to be ready..."
+              echo "Waiting for Kafka and Schema Registry to be ready."
               until nc -z kafka 9092; do
                 echo "Kafka not ready yet... sleeping 5s"
                 sleep 5
@@ -34,7 +34,7 @@ spec:
                 echo "Schema Registry not ready yet... sleeping 5s"
                 sleep 5
               done
-              echo "✅ All dependencies are ready. Starting collaboration-service!"
+              echo "All dependencies are ready. Starting collaboration-service"
       containers:
         - name: collaboration-service
           image: "{{ .Values.image.collaboration }}:{{ .Values.image.tag }}"
@@ -48,17 +48,3 @@ spec:
               value: "{{ $value }}"
             {{- end }}
 
-          # ✅ Optional health checks
-          # readinessProbe:
-          #   httpGet:
-          #     path: /q/health
-          #     port: {{ .Values.collaboration.port }}
-          #   initialDelaySeconds: 10
-          #   periodSeconds: 5
-
-          # livenessProbe:
-          #   httpGet:
-          #     path: /q/health/live
-          #     port: {{ .Values.collaboration.port }}
-          #   initialDelaySeconds: 20
-          #   periodSeconds: 10

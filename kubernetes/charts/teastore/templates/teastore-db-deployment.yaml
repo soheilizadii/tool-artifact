@@ -24,12 +24,12 @@ spec:
             - sh
             - -c
             - |
-              echo "🕓 Waiting for otel-transformer to be ready on port 10001..."
+              echo "Waiting for otel-transformer to be ready on port 10001"
               until nc -z otel-transformer 10001; do
-                echo "otel-transformer not ready yet... sleeping 5s"
+                echo "otel-transformer not ready yet. sleeping 5s"
                 sleep 5
               done
-              echo "✅ otel-transformer is ready!"
+              echo "otel-transformer is ready"
       containers:
         - name: teastore-db
           image: "{{ .Values.image.db }}:{{ .Values.image.tag }}"

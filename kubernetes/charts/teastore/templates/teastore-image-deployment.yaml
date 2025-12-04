@@ -25,12 +25,12 @@ spec:
             - /bin/sh
             - -c
             - |
-              echo "Waiting for teastore-recommender to be ready..."
+              echo "Waiting for teastore-recommender to be ready"
               until nc -z teastore-recommender 8080; do
-                echo "Still waiting for teastore-recommender..."
+                echo "Still waiting for teastore-recommender"
                 sleep 3
               done
-              echo "teastore-recommender is ready!"
+              echo "teastore-recommender is ready"
 
       containers:
         - name: teastore-image

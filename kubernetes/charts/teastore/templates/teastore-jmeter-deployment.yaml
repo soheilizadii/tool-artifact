@@ -25,12 +25,12 @@ spec:
             - sh
             - -c
             - |
-              echo "🕓 Waiting for teastore-webui to become healthy..."
+              echo "Waiting for teastore-webui to become healthy"
               until [ "$(curl -s http://teastore-webui:8080/tools.descartes.teastore.webui/status | grep -I OK | wc -l)" -eq 5 ]; do
                 echo "WebUI not ready yet... sleeping 5s"
                 sleep 5
               done
-              echo "✅ teastore-webui is healthy!"
+              echo "teastore-webui is healthy"
       containers:
         - name: teastore-jmeter
           image: "{{ .Values.image.jmeter }}:{{ .Values.image.tag }}"
