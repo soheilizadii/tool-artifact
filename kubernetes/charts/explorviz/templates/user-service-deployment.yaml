@@ -21,13 +21,13 @@ spec:
       initContainers:
         #wait for Kafka broker using Kafka CLI tools
         - name: wait-for-kafka
-          image: confluentinc/cp-kafka:7.3.0
+          image: {{ .Values.image.kafka }}:{{ .Values.image.kafkaTag }}
           command:
             - sh
             - -c
             - |
               echo "Waiting for Kafka broker to be ready"
-              until kafka-topics --bootstrap-server kafka:9092 --list >/dev/null 2>&1; do
+              until kafka-topics --bootstrap-server kafka:{{ .Values.kafka.ports.internal }} --list >/dev/null 2>&1; do
                 echo "Kafka not ready yet... sleeping 10s"
                 sleep 10
               done
@@ -45,14 +45,14 @@ spec:
               echo " Waiting for Schema Registry and MongoDB readiness"
 
               # Wait for Schema Registry HTTP API
-              until curl -sf http://schema-registry:8081/subjects >/dev/null 2>&1; do
+              until curl -sf http://schema-registry:{{ .Values.schemaRegistry.port }}/subjects >/dev/null 2>&1; do
                 echo "Schema Registry not ready yet... sleeping 10s"
                 sleep 10
               done
               echo "Schema Registry is ready"
 
               # Wait for MongoDB port
-              until nc -z mongo-user 27017; do
+              until nc -z mongo-user {{ .Values.mongoUser.port }}; do
                 echo "MongoDB not ready yet... sleeping 5s"
                 sleep 5
               done

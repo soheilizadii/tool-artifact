@@ -8,7 +8,7 @@ metadata:
 spec:
   type: {{ .Values.service.type}}
   ports:
-    - port: 10001
+    - port: {{ .Values.otelTransformer.port }}
       protocol: TCP
   selector:
     app: teastore

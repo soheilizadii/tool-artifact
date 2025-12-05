@@ -21,4 +21,4 @@ spec:
         - name: otel-transformer
           image: "{{ .Values.image.otelTransformer  }}:{{ .Values.image.tag }}"
           ports:
-            - containerPort: 10001
+            - containerPort: {{ .Values.otelTransformer.port }}

@@ -26,8 +26,8 @@ spec:
             - -c
             - |
               echo "Waiting for teastore-registry to be ready"
-              until nc -z teastore-registry 8080; do
-                echo "Still waiting for teastore-registry on port 8080"
+              until nc -z teastore-registry {{ .Values.service.port  }}; do
+                echo "Still waiting for teastore-registry on port {{ .Values.service.port  }}"
                 sleep 3
               done
               echo "teastore-registry is ready"
@@ -53,6 +53,7 @@ spec:
             - name: kieker-config
               mountPath: /kieker/config/kieker.monitoring.properties
               subPath: kieker.monitoring.properties
+              readOnly: false
       volumes:
         - name: kieker-config
           configMap:

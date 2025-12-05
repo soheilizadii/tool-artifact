@@ -26,11 +26,11 @@ spec:
             - -c
             - |
               echo "Waiting for Kafka and Schema Registry to be ready."
-              until nc -z kafka 9092; do
+              until nc -z kafka {{ .Values.kafka.ports.internal  }}; do
                 echo "Kafka not ready yet... sleeping 5s"
                 sleep 5
               done
-              until nc -z schema-registry 8081; do
+              until nc -z schema-registry {{ .Values.schemaRegistry.port }}; do
                 echo "Schema Registry not ready yet... sleeping 5s"
                 sleep 5
               done

@@ -25,7 +25,7 @@ spec:
                     sleep 5;
                   done;
 
-                  until nc -z cassandra.default.svc.cluster.local 9042; do
+                  until nc -z cassandra.default.svc.cluster.local {{ .Values.cassandra.port }}; do
                     echo "Waiting for Cassandra to accept connections";
                     sleep 5;
                   done;
@@ -41,5 +41,5 @@ spec:
           args:
             - |
               echo "Initializing Cassandra schema"
-              cqlsh cassandra.default.svc.cluster.local 9042 -f /init.cql
+              cqlsh cassandra.default.svc.cluster.local {{ .Values.cassandra.port }} -f /init.cql
               echo "Initialization complete"

@@ -24,8 +24,8 @@ spec:
             - sh
             - -c
             - |
-              echo "Waiting for otel-transformer to be ready on port 10001"
-              until nc -z otel-transformer 10001; do
+              echo "Waiting for otel-transformer to be ready on port {{ .Values.otelTransformer.port }}"
+              until nc -z otel-transformer {{ .Values.otelTransformer.port }}; do
                 echo "otel-transformer not ready yet. sleeping 5s"
                 sleep 5
               done

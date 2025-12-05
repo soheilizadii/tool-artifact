@@ -18,8 +18,8 @@ image:
   traceGenerator: "explorviz/trace-generator"
   kafkaLagExporterTag: "0.8.2"
   mongoTag: "6.0"
-  kafkaTag: "7.3.0"
-  schemaRegistryTag: "7.3.0"
+  kafkaTag: "7.3.15"
+  schemaRegistryTag: "7.3.15"
   cassandraTag: "3.11.14"
   tag: "latest"
 

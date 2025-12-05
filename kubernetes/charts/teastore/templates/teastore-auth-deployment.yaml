@@ -27,8 +27,8 @@ spec:
             - -c
             - |
               echo "Waiting for teastore-persistence to be ready"
-              until nc -z teastore-persistence 8080; do
-                echo "Still waiting for teastore-persistence on port 8080"
+              until nc -z teastore-persistence {{ .Values.service.port  }}; do
+                echo "Still waiting for teastore-persistence on port {{ .Values.service.port  }}"
                 sleep 3
               done
               echo "teastore-persistence is ready"
@@ -57,7 +57,7 @@ spec:
           readinessProbe:
             httpGet:
               path: "/tools.descartes.teastore.auth/rest/ready/isready"
-              port: 8080
+              port: {{ .Values.service.port  }}
               scheme: HTTP
             initialDelaySeconds: 15
             timeoutSeconds: 5

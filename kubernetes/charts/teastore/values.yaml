@@ -90,5 +90,9 @@ registry:
       cpu: 500m
       memory: 512Mi
 
+# ---------- OTEL Transformer ----------
+otelTransformer:
+  port: 10001
+
 # ---------- Global ----------
 replicaCount: 1

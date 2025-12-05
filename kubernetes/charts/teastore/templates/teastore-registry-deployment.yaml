@@ -24,7 +24,7 @@ spec:
             - sh
             - -c
             - |
-              until nc -z teastore-db 3306; do
+              until nc -z teastore-db {{ .Values.db.port  }}; do
                 echo "teastore-db not ready yet... sleeping 5s"
                 sleep 5
               done

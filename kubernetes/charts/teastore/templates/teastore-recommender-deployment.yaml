@@ -26,8 +26,8 @@ spec:
             - -c
             - |
               echo "Waiting for teastore-auth to be ready"
-              until nc -z teastore-auth 8080; do
-                echo "Still waiting for teastore-auth on port 8080"
+              until nc -z teastore-auth {{ .Values.service.port  }}; do
+                echo "Still waiting for teastore-auth on port {{ .Values.service.port  }}"
                 sleep 3
               done
               echo "teastore-auth is ready"

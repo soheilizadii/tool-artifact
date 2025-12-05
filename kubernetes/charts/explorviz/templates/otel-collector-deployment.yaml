@@ -21,10 +21,10 @@ spec:
       initContainers:
         - name: wait-for-schema-registry
           image: busybox
-          command: ['sh', '-c', 'until nc -z schema-registry 8081; do echo "waiting for schema-registry..."; sleep 5; done']
+          command: ['sh', '-c', 'until nc -z schema-registry {{ .Values.schemaRegistry.port }}; do echo "waiting for schema-registry..."; sleep 5; done']
       containers:
         - name: otel-collector
-          image: "{{ .Values.image.otelCollector }}"
+          image: "{{ .Values.image.otelCollector }}:{{ .Values.image.tag}}"
           env:
             - name: OTEL_LOG_LEVEL
               value: "debug"
